@@ -15,7 +15,7 @@ def get_response(message):
         # stemmed = stemmer.stem(word)
         lemma = pymorphy2.MorphAnalyzer().parse(word)[0].normal_form
         keywords.append(lemma)
-    print(keywords)
+    #print(keywords)
     return find_the_most_suitable_answer(set(keywords))
 
 
@@ -25,7 +25,7 @@ def get_response(message):
 def find_the_most_suitable_answer(keywords):
     dao = Dao()
     answers = dao.get_dictionary()
-    print(answers)
+    #print(answers)
     value_list = {}
     i = 0
     while i < 166:
