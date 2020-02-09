@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ChatBot</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+<div class="menu">
+    <img src="{% static 'img/PP_logo.png' %}">
+    <div class="back"><i class="fa fa-chevron-left"></i></div>
+    <div class="name">Чат бот</div>
+</div>
+<ol class="chat">
+    <li class="other">
+        <div class="msg">
+            <p>Привет, я чат бот</p>
+        </div>
+    </li>
+    {% if response %}
+        <li class="self">
+            <div class="msg">
+                <p>{{ text }}</p>
+            </div>
+        </li>
+        <li class="other">
+            <div class="msg">
+                <p>{{ response }}</p>
+            </div>
+        </li>
+    {% endif %}
+</ol>
+<form action="." method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button class="button" type="submit">&#10004;</button>
+
+
+</form>
+<!--<input class="textarea" type="text" placeholder="Type here!"/><div class="emojis"></div>-->
+<!-- partial -->
+
+</body>
+</html>

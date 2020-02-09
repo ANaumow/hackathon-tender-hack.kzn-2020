@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>super_chat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <header>
+        <div style="min-height: 87px;background-color: #ffffff;"><img src="{% static 'img/PP_logo.png' %}" {% comment %}src="D:\python\django\tender_hack\templates\чат\assets\img\PP_logo.png"{% endcomment %} style=" font-size: 8px;width: 178px;padding: 6px;margin: 15px;margin-left: 251px;margin-top: 20px;"></></div>
+        <div style="height: 1px;background-color: #cdcdcd;"></div>
+    </header>
+    <div style="height: 481px;background-color: #ecf2ff;">
+        <div style="margin-right: 230px;margin-left: 230px;height: 476px;background-color: #f8f8f8;">
+            <div class="d-flex d-xl-flex flex-column justify-content-xl-end" style="height: 381px;">
+                <div class="row d-xl-flex justify-content-xl-start" style="min-width: 78px;">
+                    <div class="col d-xl-flex justify-content-xl-start" style="margin: 23px;">
+                        <div class="border rounded shadow-sm d-xl-flex justify-content-xl-center align-items-xl-center" style="padding: 8px;">
+                            <p style="margin-bottom: 0;">Я - бот!</p>
+                        </div>
+                    </div>
+                </div>
+                {% if response and text != 'да' and text != 'нет' %}
+                    <div class="row d-xl-flex justify-content-xl-start" style="min-width: 78px;">
+                    <div class="col d-xl-flex justify-content-xl-end" style="margin: 23px;">
+                        <div class="border rounded shadow-sm d-xl-flex justify-content-xl-center align-items-xl-center" style="padding: 8px;">
+                            <p style="margin-bottom: 0;">{{ text }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-xl-flex justify-content-xl-start" style="min-width: 78px;">
+                    <div class="col d-xl-flex justify-content-xl-start" style="margin: 23px;">
+                        <div class="border rounded shadow-sm d-xl-flex justify-content-xl-center align-items-xl-center" style="padding: 8px;">
+                            <p style="margin-bottom: 0;">{{ response }} Вам помог наш ответ?</p>
+                        </div>
+                    </div>
+                </div>
+
+                {% elif text == 'да' %}
+                    <div class="row d-xl-flex justify-content-xl-start" style="min-width: 78px;">
+                    <div class="col d-xl-flex justify-content-xl-start" style="margin: 23px;">
+                        <div class="border rounded shadow-sm d-xl-flex justify-content-xl-center align-items-xl-center" style="padding: 8px;">
+                            <p style="margin-bottom: 0;">Вам помог наш ответ?</p>
+                        </div>
+                    </div>
+                </div>
+                    <div class="row d-xl-flex justify-content-xl-start" style="min-width: 78px;">
+                    <div class="col d-xl-flex justify-content-xl-end" style="margin: 23px;">
+                        <div class="border rounded shadow-sm d-xl-flex justify-content-xl-center align-items-xl-center" style="padding: 8px;">
+                            <p style="margin-bottom: 0;">Да</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-xl-flex justify-content-xl-start" style="min-width: 78px;">
+                    <div class="col d-xl-flex justify-content-xl-start" style="margin: 23px;">
+                        <div class="border rounded shadow-sm d-xl-flex justify-content-xl-center align-items-xl-center" style="padding: 8px;">
+                            <p style="margin-bottom: 0;">Рады были Вам помочь!</p>
+                        </div>
+                    </div>
+                </div>
+                {% elif text == 'нет'%}
+                    <div class="row d-xl-flex justify-content-xl-start" style="min-width: 78px;">
+                    <div class="col d-xl-flex justify-content-xl-start" style="margin: 23px;">
+                        <div class="border rounded shadow-sm d-xl-flex justify-content-xl-center align-items-xl-center" style="padding: 8px;">
+                            <p style="margin-bottom: 0;">Вам помог наш ответ?</p>
+                        </div>
+                    </div>
+                </div>
+                    <div class="row d-xl-flex justify-content-xl-start" style="min-width: 78px;">
+                    <div class="col d-xl-flex justify-content-xl-end" style="margin: 23px;">
+                        <div class="border rounded shadow-sm d-xl-flex justify-content-xl-center align-items-xl-center" style="padding: 8px;">
+                            <p style="margin-bottom: 0;">Нет</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-xl-flex justify-content-xl-start" style="min-width: 78px;">
+                    <div class="col d-xl-flex justify-content-xl-start" style="margin: 23px;">
+                        <div class="border rounded shadow-sm d-xl-flex justify-content-xl-center align-items-xl-center" style="padding: 8px;">
+                            <p style="margin-bottom: 0;">Напишите в тех. поддержку</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 101px;background-color: #ffffff;">
+                <form action="." method="post" autocomplete="off">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button class="btn btn-primary" type="submit" style="margin: 2px;height: 30px;padding-top: 0px;background-color: rgb(38,110,188);">отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
